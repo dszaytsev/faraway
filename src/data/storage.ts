@@ -1,9 +1,8 @@
 import { Character } from "./entities"
 
 export type Pagination = {
-  currentPage: number
+  page: number
   perPage: number
-  pageCount: number
 }
 
 export type FilterName = string
