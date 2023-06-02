@@ -1,0 +1,1 @@
+export { changeSearch } from "./pageSearchController"
