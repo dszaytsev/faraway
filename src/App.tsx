@@ -1,32 +1,24 @@
-import { useEffect } from "react"
-import "./App.css"
-import { useAppDispatch, useAppSelector } from "./app/hooks"
+import { Route, Switch } from "wouter"
 
-import { fetchCharacters } from "./features/characterList"
+import { CharacterDetails } from "./pages/CharacterDetails"
+import { CharacterList } from "./pages/CharacterList"
 
 function App() {
-  const state = useAppSelector((state) => state)
-  const dispatch = useAppDispatch()
+  return (
+    <>
+      <Switch>
+        <Route path="/">
+          <CharacterList />
+        </Route>
 
-  useEffect(() => {
-    const promise = dispatch(
-      fetchCharacters({
-        filter: {},
-        pagination: {
-          currentPage: 0,
-          pageCount: 20,
-          perPage: 10,
-        },
-        search: "",
-      }),
-    )
+        <Route path="character/:id">
+          <CharacterDetails />
+        </Route>
 
-    return () => {
-      promise.abort()
-    }
-  }, [])
-
-  return <div className="App">{JSON.stringify(state)}</div>
+        <Route>404</Route>
+      </Switch>
+    </>
+  )
 }
 
 export default App
