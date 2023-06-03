@@ -23,7 +23,6 @@ export const characterListSlice = createSlice({
     })
 
     builder.addCase(fetchCharacters.rejected, (state, payload) => {
-      console.log(payload)
       state.state = "error"
     })
   },

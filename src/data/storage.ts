@@ -16,6 +16,23 @@ export type GetCharactersParams = {
   search: string
 }
 
+const STUB: Character = {
+  name: "Luke",
+  birthYear: "asdf",
+  eyeColor: "asdfasfas",
+  films: [],
+  gender: "male",
+  hairColor: "asdf",
+  height: 213,
+  homeworld: "asdf",
+  id: "",
+  mass: 23,
+  skinColor: "asdf",
+  species: [],
+  starships: [],
+  vehicles: [],
+}
+
 export async function getCharacters({
   filter,
   pagination,
@@ -23,22 +40,13 @@ export async function getCharacters({
 }: GetCharactersParams): Promise<Character[]> {
   await Promise.resolve()
 
-  return [
-    {
-      name: "Luke",
-      birthYear: "asdf",
-      eyeColor: "asdfasfas",
-      films: [],
-      gender: "male",
-      hairColor: "asdf",
-      height: 213,
-      homeworld: "asdf",
-      id: "",
-      mass: 23,
-      skinColor: "asdf",
-      species: [],
-      starships: [],
-      vehicles: [],
-    },
-  ]
+  const random = Math.floor(Math.random() * 10) + 1
+
+  let result = []
+
+  for (let i = 0; i < random; i++) {
+    result.push({ ...STUB })
+  }
+
+  return result
 }
