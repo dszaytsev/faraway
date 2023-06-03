@@ -7,3 +7,10 @@ export function changeUrlQueryParam(key: string, value: string): void {
   params.set(key, value)
   changeUrlQuery(params)
 }
+
+export function getParamsFromSearch(
+  searchQuery: string,
+): Record<string, string> {
+  const params = new URLSearchParams(searchQuery)
+  return Object.fromEntries(params.entries())
+}

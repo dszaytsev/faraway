@@ -1,4 +1,4 @@
-import { changeUrlQueryParam } from "../../utils/urlQuery"
+import { changeUrlQueryParam } from "../helpers"
 
 import { PAGE_SEARCH_PARAM_KEY } from "./pageSearch"
 
