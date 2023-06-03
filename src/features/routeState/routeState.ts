@@ -1,7 +1,3 @@
-import { Pagination } from "./pagination/pagination"
+import { GetListParams } from "../../shared/types"
 
-export type RouteState = {
-  pagination: Pagination
-  search: string
-  filter: Record<string, string>
-}
+export type RouteState = GetListParams

@@ -4,8 +4,12 @@ import { getParamsFromSearch } from "./helpers"
 import { DEFAULT_PAGE, DEFAULT_PAGE_SIZE } from "./pagination/pagination"
 
 export function getRouteState(locationSearch: string): RouteState {
-  const { page, perPage, search, ...filter } =
-    getParamsFromSearch(locationSearch)
+  const {
+    page,
+    perPage,
+    search = "",
+    ...filter
+  } = getParamsFromSearch(locationSearch)
 
   return {
     filter,
@@ -13,6 +17,6 @@ export function getRouteState(locationSearch: string): RouteState {
       page: Number(page ?? DEFAULT_PAGE),
       perPage: Number(perPage ?? DEFAULT_PAGE_SIZE),
     },
-    search: search,
+    search,
   }
 }

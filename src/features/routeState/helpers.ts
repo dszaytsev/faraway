@@ -10,7 +10,7 @@ export function changeUrlQueryParam(key: string, value: string): void {
 
 export function getParamsFromSearch(
   searchQuery: string,
-): Record<string, string> {
+): Partial<Record<string, string>> {
   const params = new URLSearchParams(searchQuery)
   return Object.fromEntries(params.entries())
 }
