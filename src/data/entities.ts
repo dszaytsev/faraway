@@ -1,20 +1,6 @@
-export type Character = {
-  id: string
-  name: string
-  height: number
-  mass: number
-  hairColor: string
-  skinColor: string
-  eyeColor: string
-  birthYear: string
-  gender: string
-  homeworld: string
+import { IPeople } from "swapi-ts"
 
-  films: string[]
-  species: string[]
-  vehicles: string[]
-  starships: string[]
-}
+export type Character = Omit<IPeople, "created" | "edited">
 
 export type Film = {
   id: string

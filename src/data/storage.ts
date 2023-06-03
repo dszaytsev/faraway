@@ -1,52 +1,43 @@
 import { Character } from "./entities"
 
-export type Pagination = {
-  page: number
-  perPage: number
-}
+import * as charactersApi from "../api/characters"
+import { GetListParams } from "../shared/types"
 
 export type FilterName = string
 export type FilterValue = any
 
 export type Filter = Record<FilterName, FilterValue>
 
-export type GetCharactersParams = {
-  filter: Filter
-  pagination: Pagination
-  search: string
-}
+const LOCAL_STORAGE_KEY = "app.characters.storage"
 
 const STUB: Character = {
   name: "Luke",
-  birthYear: "asdf",
-  eyeColor: "asdfasfas",
+  birth_year: "asdf",
+  eye_color: "asdfasfas",
   films: [],
   gender: "male",
-  hairColor: "asdf",
-  height: 213,
+  hair_color: "asdf",
+  height: "213",
   homeworld: "asdf",
-  id: "",
-  mass: 23,
-  skinColor: "asdf",
+  url: "",
+  mass: "23",
+  skin_color: "asdf",
   species: [],
   starships: [],
   vehicles: [],
 }
 
-export async function getCharacters({
-  filter,
-  pagination,
-  search,
-}: GetCharactersParams): Promise<Character[]> {
-  await Promise.resolve()
-
-  const random = Math.floor(Math.random() * 10) + 1
-
-  let result = []
-
-  for (let i = 0; i < random; i++) {
-    result.push({ ...STUB })
-  }
+export async function getCharacters(params: GetListParams): Promise<{
+  result: Character[]
+  count: number
+}> {
+  const result = await charactersApi.getCharacters(params)
 
   return result
+}
+
+export async function getCharacter(): Promise<Character> {
+  await Promise.resolve()
+
+  return STUB
 }

@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
 import { CHARACTER_LIST_INITIAL_STATE } from "./characterList"
-import { GetCharactersParams, getCharacters } from "../../data/storage"
+import { getCharacters } from "../../data/storage"
+import { GetListParams } from "../../shared/types"
 
 export const characterListSlice = createSlice({
   name: "characterList",
@@ -18,7 +19,8 @@ export const characterListSlice = createSlice({
     })
 
     builder.addCase(fetchCharacters.fulfilled, (state, { payload }) => {
-      state.characters = payload
+      state.characters = payload.result
+      state.totalCharacters = payload.count
       state.state = "success"
     })
 
@@ -30,7 +32,7 @@ export const characterListSlice = createSlice({
 
 export const fetchCharacters = createAsyncThunk(
   "characterList/fetchUsers",
-  (payload: GetCharactersParams) => {
+  (payload: GetListParams) => {
     return getCharacters(payload)
   },
 )
