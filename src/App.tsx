@@ -11,8 +11,8 @@ function App() {
           <CharacterList />
         </Route>
 
-        <Route path="character/:id">
-          <CharacterDetails />
+        <Route path="/character/:id">
+          {(params) => <CharacterDetails characterId={params.id} />}
         </Route>
 
         <Route>404</Route>

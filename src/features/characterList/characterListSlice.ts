@@ -25,7 +25,9 @@ export const characterListSlice = createSlice({
     })
 
     builder.addCase(fetchCharacters.rejected, (state, payload) => {
-      state.state = "error"
+      if (!payload.meta.aborted) {
+        state.state = "error"
+      }
     })
   },
 })

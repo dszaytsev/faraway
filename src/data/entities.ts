@@ -1,6 +1,8 @@
 import { IPeople } from "swapi-ts"
 
-export type Character = Omit<IPeople, "created" | "edited">
+export type Character = Omit<IPeople, "created" | "edited"> & {
+  id: string
+}
 
 export type Film = {
   id: string
