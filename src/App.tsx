@@ -1,6 +1,6 @@
 import { Route, Link as RouterLink, Switch } from "wouter"
 
-import { CharacterDetails } from "./pages/CharacterDetails"
+import { CharacterDetailsPage } from "./pages/CharacterDetails"
 import { CharacterListPage } from "./pages/CharacterList"
 import { AppBar, Container, CssBaseline, Link, Toolbar } from "@mui/material"
 
@@ -26,7 +26,7 @@ function App() {
           </Route>
 
           <Route path="/character/:id">
-            {(params) => <CharacterDetails characterId={params.id} />}
+            {(params) => <CharacterDetailsPage characterId={params.id} />}
           </Route>
 
           <Route>404</Route>

@@ -1,12 +1,19 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
-import { CHARACTER_DETAILS_INITIAL_STATE } from "./characterDetails"
+import {
+  CHARACTER_DETAILS_INITIAL_STATE,
+  SuccessState,
+} from "./characterDetails"
 import { getCharacter } from "../../data/storage"
 
 export const characterDetailsSlice = createSlice({
   name: "characterDetails",
   initialState: CHARACTER_DETAILS_INITIAL_STATE,
   reducers: {
+    changeState(state, { payload }: PayloadAction<SuccessState>) {
+      state.state = payload
+    },
+
     destroy() {
       return CHARACTER_DETAILS_INITIAL_STATE
     },

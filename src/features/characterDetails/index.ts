@@ -1,5 +1,6 @@
 import { characterDetailsSlice, fetchCharacter } from "./characterDetailsSlice"
 
-const characterDetailsReducer = characterDetailsSlice.reducer
+export const characterDetailsReducer = characterDetailsSlice.reducer
+export const characterDetailsActions = characterDetailsSlice.actions
 
-export { characterDetailsReducer, fetchCharacter }
+export { fetchCharacter }
