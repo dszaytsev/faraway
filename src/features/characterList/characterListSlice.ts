@@ -33,7 +33,7 @@ export const characterListSlice = createSlice({
 })
 
 export const fetchCharacters = createAsyncThunk(
-  "characterList/fetchUsers",
+  "characterList/fetchCharacters",
   (payload: GetListParams) => {
     return getCharacters(payload)
   },
