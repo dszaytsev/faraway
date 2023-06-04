@@ -2,14 +2,16 @@ import { FC, useEffect } from "react"
 
 import { fetchCharacter } from "../features/characterDetails"
 import { useAppDispatch, useAppSelector } from "../app/hooks"
+import { CharacterDetails } from "../features/characterDetails/components/CharacterDetails"
+import { CircularProgress, Paper, Stack } from "@mui/material"
 
 type Props = {
   characterId: string
 }
 
-export const CharacterDetails: FC<Props> = ({ characterId }) => {
+export const CharacterDetailsPage: FC<Props> = ({ characterId }) => {
   const dispatch = useAppDispatch()
-  const { state, character } = useAppSelector((state) => state.characterDetails)
+  const characterDetails = useAppSelector((state) => state.characterDetails)
 
   useEffect(() => {
     const fetcher = dispatch(fetchCharacter(characterId))
@@ -19,7 +21,21 @@ export const CharacterDetails: FC<Props> = ({ characterId }) => {
     }
   }, [characterId, dispatch])
 
-  if (state === "loading") return <span>loading</span>
+  return (
+    <Paper
+      sx={{
+        py: 2,
+        px: 4,
+      }}
+    >
+      <Stack direction="row" justifyContent="center">
+        {characterDetails.state === "loading" && <CircularProgress />}
+        {characterDetails.state === "error" && <span>Error occurred</span>}
+      </Stack>
 
-  return <div>{JSON.stringify(character)}</div>
+      {characterDetails.state === "success" && (
+        <CharacterDetails character={characterDetails.character} />
+      )}
+    </Paper>
+  )
 }
