@@ -27,7 +27,7 @@ https://swapi.dev/), реализовать SPA приложение React и Ty
 Node.js v16 is preferable. Run following command and follow instructions in terminal output
 
 ```
-npm start
+npm i && npm start
 ```
 
 ### Via Docker
