@@ -1,7 +1,7 @@
 import { FC, useEffect } from "react"
 
 import { Search } from "../features/routeState/components/Search"
-import { CharacterList } from "../features/characterList/ui/CharacterList"
+import { CharacterList } from "../features/characterList/components/CharacterList"
 import { Box } from "@mui/material"
 import { useAppDispatch } from "../app/hooks"
 import { characterListActions } from "../features/characterList"
