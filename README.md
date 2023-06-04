@@ -1,27 +1,21 @@
-# vite-template-redux
+Test assignment in faraway
 
-Uses [Vite](https://vitejs.dev/), [Vitest](https://vitest.dev/), and [React Testing Library](https://github.com/testing-library/react-testing-library) to create a modern [React](https://react.dev/) app compatible with [Create React App](https://create-react-app.dev/)
+## Description
 
-```sh
-npx degit reduxjs/redux-templates/packages/vite-template-redux my-app
-```
+Используя стороннее API в качестве источника данных (пример: Star Wars API
+https://swapi.dev/), реализовать SPA приложение React и Typescript, состоящее из двух страниц.
+На главной странице отобразить список или карточки персонажей, к списку добавить
+возможность пагинации. На главной странице должен быть реализован поиск персонажей.
+Реализовать страницу с подробной информацией по выбранному персонажу.
 
-## Goals
+Плюсы:
 
-- Easy migration from Create React App or Vite
-- As beginner friendly as Create React App
-- Optimized performance compared to Create React App
-- Customizable without ejecting
+- Аккуратная верстка
+- Использование UI фреймворка (Material, Ant, Bootstrap и т.п.)
+  В качестве дополнительного задания:
+- Для работы с данными использовать хранилище Redux
+- Редактировать информацию о персонаже локально, без отправки на сервер
+- Написать тесты
+- Фильтрация на главной странице
 
-## Scripts
-
-- `dev`/`start` - start dev server and open browser
-- `build` - build for production
-- `preview` - locally preview production build
-- `test` - launch test runner
-
-## Inspiration
-
-- [Create React App](https://github.com/facebook/create-react-app/tree/main/packages/cra-template)
-- [Vite](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react)
-- [Vitest](https://github.com/vitest-dev/vitest/tree/main/examples/react-testing-lib)
+## [System Design](./SYSTEM_DESIGN.md)
