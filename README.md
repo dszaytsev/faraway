@@ -19,3 +19,34 @@ https://swapi.dev/), реализовать SPA приложение React и Ty
 - Фильтрация на главной странице
 
 ## [System Design](./SYSTEM_DESIGN.md)
+
+## Start Project
+
+### Via npm
+
+Node.js v16 is preferable. Run following command and follow instructions in terminal output
+
+```
+npm start
+```
+
+### Via Docker
+
+Run follow command. Project will start on http://localhost:3050. You can change port in Makefile
+
+```
+make start
+```
+
+## What's done
+
+- System design
+- Layered architecture with separation of concerns
+- List and details pages
+- Character editing
+- Search and pagination
+
+## And what's not
+
+- filtration
+- testing
