@@ -38,12 +38,10 @@ export async function getCharacter(characterId: string): Promise<Character> {
   return character
 }
 
-export async function updateCharacter(
-  updatedCharacter: Character,
-): Promise<void> {
+export async function setCharacter(character: Character): Promise<void> {
   await Promise.resolve()
 
-  saveCharacterToLocalStorage(updatedCharacter)
+  saveCharacterToLocalStorage(character)
 }
 
 function getCharacterFromLocalStorage(characterId: string): Character | null {

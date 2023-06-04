@@ -4,6 +4,7 @@ import { fetchCharacter } from "../features/characterDetails"
 import { useAppDispatch, useAppSelector } from "../app/hooks"
 import { CharacterDetails } from "../features/characterDetails/components/CharacterDetails"
 import { CircularProgress, Paper, Stack } from "@mui/material"
+import { EditCharacter } from "../features/characterDetails/components/EditCharacter"
 
 type Props = {
   characterId: string
@@ -35,6 +36,14 @@ export const CharacterDetailsPage: FC<Props> = ({ characterId }) => {
 
       {characterDetails.state === "success" && (
         <CharacterDetails character={characterDetails.character} />
+      )}
+
+      {(characterDetails.state === "characterEditing" ||
+        characterDetails.state === "characterUpdating") && (
+        <EditCharacter
+          disabled={characterDetails.state === "characterUpdating"}
+          character={characterDetails.character}
+        />
       )}
     </Paper>
   )
