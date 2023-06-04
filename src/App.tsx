@@ -1,7 +1,7 @@
 import { Route, Link as RouterLink, Switch } from "wouter"
 
 import { CharacterDetails } from "./pages/CharacterDetails"
-import { CharacterList } from "./pages/CharacterList"
+import { CharacterListPage } from "./pages/CharacterList"
 import { AppBar, Container, CssBaseline, Link, Toolbar } from "@mui/material"
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
       <Container component="main" maxWidth="md">
         <Switch>
           <Route path="/">
-            <CharacterList />
+            <CharacterListPage />
           </Route>
 
           <Route path="/character/:id">

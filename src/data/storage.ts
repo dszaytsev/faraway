@@ -51,8 +51,8 @@ function getCharacterFromLocalStorage(characterId: string): Character | null {
 
   if (!value) return null
 
-  const kek = JSON.parse(value)
-  return { ...kek, name: "Andrey Ogurtsov" }
+  const character = JSON.parse(value)
+  return { ...character }
 }
 
 function saveCharacterToLocalStorage(character: Character): void {

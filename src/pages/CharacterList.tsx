@@ -1,45 +1,17 @@
-import { FC, useEffect } from "react"
+import { FC } from "react"
 
-import { fetchCharacters } from "../features/characterList"
+import { Search } from "../features/routeState/components/Search"
+import { CharacterList } from "../features/characterList/ui/CharacterList"
+import { Box } from "@mui/material"
 
-import { changeSearch } from "../features/routeState/pageSearch"
-import { useCharacterListRouteState } from "../features/characterList/hooks"
-
-import { goToPage } from "../features/routeState/pagination"
-import { useAppDispatch, useAppSelector } from "../app/hooks"
-
-export const CharacterList: FC = () => {
-  const routeState = useCharacterListRouteState()
-  const characterList = useAppSelector((state) => state.characterList)
-  const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    const fetcher = dispatch(fetchCharacters(routeState))
-
-    return () => {
-      fetcher.abort()
-    }
-  }, [dispatch, routeState])
-
-  if (characterList.state === "loading") return <>"loading"</>
-
+export const CharacterListPage: FC = () => {
   return (
     <div>
-      <button onClick={() => goToPage(routeState.pagination.page - 1)}>
-        page prev
-      </button>
+      <Search />
 
-      <button onClick={() => goToPage(routeState.pagination.page + 1)}>
-        page next
-      </button>
-
-      <button onClick={() => changeSearch(Math.random() + "")}>
-        change search
-      </button>
-
-      {JSON.stringify(characterList)}
+      <Box sx={{ mt: 4 }}>
+        <CharacterList />
+      </Box>
     </div>
   )
-
-  // return null
 }
