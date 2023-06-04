@@ -2,11 +2,12 @@ import { FC, useEffect } from "react"
 import { useCharacterListRouteState } from "./hooks"
 import { useAppSelector, useAppDispatch } from "../../../app/hooks"
 import { fetchCharacters } from ".."
-import { Stack, Typography } from "@mui/material"
+import { Box, CircularProgress, Stack, Typography } from "@mui/material"
 import Paper from "@mui/material/Paper"
 import { Character } from "../../../data/entities"
 import { Link } from "wouter"
 import { grey } from "@mui/material/colors"
+import { Pagination } from "../../routeState/components/Pagination"
 
 type CharacterItemProps = {
   character: Character
@@ -35,7 +36,9 @@ const CharacterItem: FC<CharacterItemProps> = ({ character }) => {
 
 export const CharacterList: FC = () => {
   const routeState = useCharacterListRouteState()
-  const characterList = useAppSelector((state) => state.characterList)
+  const { characters, state, totalCharacters } = useAppSelector(
+    (state) => state.characterList,
+  )
   const dispatch = useAppDispatch()
 
   useEffect(() => {
@@ -46,13 +49,30 @@ export const CharacterList: FC = () => {
     }
   }, [dispatch, routeState])
 
+  const { pagination } = routeState
+
   return (
     <>
-      <Stack spacing={2}>
-        {characterList.characters.map((character) => (
-          <CharacterItem character={character} key={character.id} />
-        ))}
-      </Stack>
+      {state === "loading" ? (
+        <Stack direction="row" justifyContent="center">
+          <CircularProgress />
+        </Stack>
+      ) : (
+        <Stack spacing={2}>
+          {characters.map((character) => (
+            <CharacterItem character={character} key={character.id} />
+          ))}
+        </Stack>
+      )}
+
+      <Box sx={{ mt: 4 }}>
+        <Pagination
+          perPage={pagination.perPage}
+          itemCount={totalCharacters}
+          page={pagination.page}
+          disabled={state === "loading"}
+        />
+      </Box>
     </>
   )
 }

@@ -19,7 +19,7 @@ function App() {
         </Toolbar>
       </AppBar>
 
-      <Container component="main" maxWidth="md">
+      <Container component="main" maxWidth="md" sx={{ mb: 4 }}>
         <Switch>
           <Route path="/">
             <CharacterListPage />
