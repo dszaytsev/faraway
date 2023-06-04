@@ -46,7 +46,6 @@ type EditFieldName = keyof Omit<
   "homeworld" | "films" | "species" | "starships" | "vehicles"
 >
 const FIELDS_TO_EDIT: EditFieldName[] = [
-  "name",
   "birth_year",
   "gender",
   "eye_color",
@@ -77,7 +76,7 @@ export const EditCharacter: FC<Props> = ({ character, disabled = false }) => {
       }}
     >
       <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
-        Character Editing
+        Edit: {character.name}
       </Typography>
 
       {FIELDS_TO_EDIT.map((field) => (
