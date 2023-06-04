@@ -32,7 +32,7 @@ npm start
 
 ### Via Docker
 
-Run follow command. Project will start on http://localhost:3050. You can change port in Makefile
+Run following command. Project will start on http://localhost:3050. You can change port in Makefile
 
 ```
 make start
