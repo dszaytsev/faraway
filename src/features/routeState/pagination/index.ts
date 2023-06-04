@@ -1,1 +1,1 @@
-export { goToPage } from "./paginationController"
+export { goToPage, changePerPage } from "./paginationController"
