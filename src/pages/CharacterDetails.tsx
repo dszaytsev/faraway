@@ -1,6 +1,9 @@
 import { FC, useEffect } from "react"
 
-import { fetchCharacter } from "../features/characterDetails"
+import {
+  characterDetailsActions,
+  fetchCharacter,
+} from "../features/characterDetails"
 import { useAppDispatch, useAppSelector } from "../app/hooks"
 import { CharacterDetails } from "../features/characterDetails/components/CharacterDetails"
 import { CircularProgress, Paper, Stack } from "@mui/material"
@@ -21,6 +24,12 @@ export const CharacterDetailsPage: FC<Props> = ({ characterId }) => {
       fetcher.abort()
     }
   }, [characterId, dispatch])
+
+  useEffect(() => {
+    return () => {
+      dispatch(characterDetailsActions.destroy())
+    }
+  }, [dispatch])
 
   return (
     <Paper
